@@ -1,7 +1,7 @@
 "use client";
 
 import React, {useState} from "react";
-import { Foundation } from "@/components/foundation"
+
 
 
  function Home() {
@@ -14,7 +14,7 @@ import { Foundation } from "@/components/foundation"
 function Foundation (props) {
         return (
             <main className="text-2xl font-bold flex justify-center items-center h-screen">
-                <div className="center">
+                <div>
                     <p className="text-8xl">Create Today's Capsule</p>
                     {props.children}
                 </div>
@@ -40,7 +40,9 @@ function LoginArea() {
  return (
         <div>
             <Foundation>
-                <button className="center"onClick={handleLoginClick}>Here!</button>
+                <div className="text-center">
+                <button onClick={handleLoginClick}>Here!</button>
+                </div>       
             </Foundation>
             {showLogin? <LoginArea /> : <></>}
         </div>
