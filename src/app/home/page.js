@@ -1,5 +1,5 @@
 "use client";
-
+import { LuSparkle } from "react-icons/lu";
 import React, {useState} from "react";
 
 
@@ -15,7 +15,6 @@ function Foundation (props) {
         return (
             <main className="text-2xl font-bold flex justify-center items-center h-screen">
                 <div>
-                    <p className="text-8xl">Create Today's Capsule</p>
                     {props.children}
                 </div>
             </main> 
@@ -40,8 +39,8 @@ function LoginArea() {
  return (
         <div>
             <Foundation>
-                <div className="text-center">
-                <button onClick={handleLoginClick}>Here!</button>
+                <div className="flex justify justify-center font-sans-arial text-7xl font-light px-3">
+                <button onClick={handleLoginClick}>Create Todays's Capsule!</button>
                 </div>       
             </Foundation>
             {showLogin? <LoginArea /> : <></>}
