@@ -40,7 +40,7 @@ function LoginArea() {
         <div>
             <Foundation>
                 <div className="flex justify justify-center font-sans-arial text-7xl font-light px-3">
-                <button onClick={handleLoginClick}>Create Todays's Capsule!</button>
+                <button onClick={handleLoginClick}>Create Today's Capsule!</button>
                 </div>       
             </Foundation>
             {showLogin? <LoginArea /> : <></>}
