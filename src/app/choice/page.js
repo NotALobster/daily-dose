@@ -14,7 +14,7 @@ const Choice = () => {
             </Link>
           </div>
           <div>
-            <Link href="/calendar">
+            <Link href="/today">
               <CiPill className="flex justify-center items-center ml-28" size={150} />
               <div className="flex justify justify-center font-sans-arial text-xl font-light px-3">Look at Past Capsules</div>
             </Link>

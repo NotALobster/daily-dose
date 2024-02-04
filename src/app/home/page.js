@@ -43,6 +43,26 @@ function Home() {
             const password = event.target.password.value;
             server(username, password);
         };
+        const [passFailState, setPassFailState] = useState();
+        
+        function server(username, password) {
+            axios.post(apiUrl + "users/signin", {
+                username, 
+                password
+            })
+            .then(response => {
+                console.log("test");
+                if (response.status == 200) {
+                    const cookies = new Cookies(null, { path: '/' });
+                    cookies.set('userToken', response.data.accessToken);
+                    router.push("/choice")
+                }
+            })
+            .catch(error => {
+                setPassFailState(<div className="flex justify-end text-red-600">Incorrect username or password.</div>)
+                console.error('Error:', error);
+            });
+        }
 
         return (
             /*
@@ -95,6 +115,9 @@ function Home() {
                             <input className="flex justify-center" type="text" name="username" placeholder="Username" autoComplete="off" />
                             <input className="flex justify-center" type="password" name="password" placeholder="Password" autoComplete="off" />
                         </div>
+
+                        {passFailState}
+
                         <div className="mr-2">
                             <Link href="/signup">
                                 <div className="flex justify justify-end font-sans-arial text-6 font-light px-0 pt-2">Sign Up</div>
@@ -121,23 +144,6 @@ function Home() {
         );
     }
 
-    function server(username, password) {
-        axios.post(apiUrl + "users/signin", {
-            username, 
-            password
-        })
-        .then(response => {
-            //console.log(response);
-            if (response.status == 200) {
-                const cookies = new Cookies(null, { path: '/' });
-                cookies.set('userToken', response.data.accessToken);
-                router.push("/choice")
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    }
 
 
 

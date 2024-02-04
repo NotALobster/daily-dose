@@ -24,7 +24,7 @@ const Today = () => {
                 && dateToCheck.getFullYear() === actualDate.getFullYear())
                 console.log(isSameDay);
                 if(isSameDay){
-                    toSend = (element.date_added + ": " + element.message).toString();
+                    toSend = (new Date(element.date_added).toDateString() + ": " + element.message).toString();
                     setSendState(toSend);
                     foundCap = true;
                 }

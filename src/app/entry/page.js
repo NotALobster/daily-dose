@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link.js";
 import React from "react";
 import { useRouter } from 'next/navigation';
 
@@ -29,7 +30,11 @@ function Entry() {
                 </button>  
                 </form>
             </div>
+            <Link className="flex-col justify-center" href="/choice">
+                    <div className="flex justify justify-center font-sans-arial text-xl mt-32 font-light pt-2 ">Home</div>
+                </Link>
         </div>
+        
     );
 }
 

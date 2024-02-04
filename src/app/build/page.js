@@ -10,6 +10,9 @@ const Build = () => {
         <Link href="/entry">
             <div className="flex justify justify-center font-sans-arial text-8xl font-light px-3">+</div>
         </Link>
+        <Link href="/choice">
+              <div className="flex justify justify-center font-sans-arial text-xl mt-64 font-light">Home</div>
+        </Link>
       </>
     );
   };
