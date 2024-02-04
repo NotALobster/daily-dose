@@ -1,17 +1,20 @@
 "use client";
-import { LuSparkle } from "react-icons/lu";
+import { useRouter } from 'next/navigation';
 import React, { useState } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
 
 const apiUrl = "https://qwer-2024.onrender.com/";
 
+
 function Home() {
+
+    const router = useRouter()
     const [showLogin, setShowLogin] = useState(false);
 
     const handleLoginClick = () => {
         setShowLogin((prevShowLogin) => !prevShowLogin);
-    };
+    };  
 
     function Foundation(props) {
         return (
@@ -43,18 +46,22 @@ function Home() {
 
     function server(username, password) {
         axios.post(apiUrl + "users/signin", {
-            username,
+            username, 
             password
         })
         .then(response => {
             console.log(response);
+            if (response.status == 200) {
+                router.push("/choice")
+            }
             const cookies = new Cookies(null, { path: '/' });
-            cookies.set('userToken', response.data.accessToken);
         })
         .catch(error => {
             console.error('Error:', error);
         });
     }
+
+
 
     return (
         <div>
