@@ -1,9 +1,7 @@
 
-
 import React, { Component } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
-
 
 const URL = "https://qwer-2024.onrender.com/";//"http://localhost:3000/";//'https://qwer-2024.onrender.com/' "http://localhost:3000/";
 
@@ -27,20 +25,7 @@ export function Signin(username, password){
     .then(response => {
         const cookies = new Cookies(null, { path: '/' });
         cookies.set('userToken', response.data.accessToken);
-    })
-}
-
-export function Signup(username, password){
-    axios.post(URL + "users/signup", {
-        'username' : username,
-        'password' : password
-    }) 
-    .catch(err => {
-        console.log("if this is 400 then username is already in use")
-        console.log(err);
-    })       
-    .then(response => {
-        console.log(response);
+        
     })
 }
 
