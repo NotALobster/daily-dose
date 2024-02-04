@@ -31,12 +31,11 @@ function Home() {
         };
 
         return (
-            <div>
-                <h2 className="font-bold ml-16">Login Area</h2>
+            <div className="flex justify justify-center">
                 <form onSubmit={handleSubmit}>
-                    <input type="text" name="username" placeholder="Username" autoComplete="off" />
-                    <input type="password" name="password" placeholder="Password" autoComplete="off" />
-                    <button type="submit">Login</button>
+                    <input className="flex justify justify-center border" type="text" name="username" placeholder="Username" autoComplete="off" />
+                    <input className="flex justify justify-center border" type="password" name="password" placeholder="Password" autoComplete="off" />
+                    <button className="flex justify justify-center border" type="submit">Login</button>
                 </form>
             </div>
         );
