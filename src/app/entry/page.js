@@ -4,7 +4,7 @@ const Entry = () => {
 
         return (
             <div>
-                entry
+            <h2>Tell Me About Your Day</h2>
             </div>
         )
 }
