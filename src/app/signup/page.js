@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from 'next/navigation';
-import React from "react"
+import React, {useState} from "react"
 import Link from "next/link";
 import { CiPill } from "react-icons/ci";
 import {SignupNewAccount} from '../utils.js';
@@ -13,6 +13,8 @@ const URL = "https://qwer-2024.onrender.com/";
 const Signup = () => {
     const router = useRouter();
 
+    const [userExists, setUserExists] = useState();
+        
     //stolen from home
     function server(username, password) {
         axios.post(URL + "users/signin", {
@@ -44,6 +46,7 @@ const Signup = () => {
             server(username, password);
         })
         .catch(err => {
+            setUserExists(<div className="flex justify-end text-red-600">User already exists.</div>)
             console.log("if this is 400 then username is already in use")
             console.log(err);
             //TODO: actual error handling...
@@ -87,6 +90,7 @@ const Signup = () => {
                             <input className="flex justify-center" type="text" name="username" placeholder="Username" autoComplete="off" />
                             <input className="flex justify-center" type="password" name="password" placeholder="Password" autoComplete="off" />
                         </div>
+                        {userExists}
                         <div className="flex justify-end">
                             <button 
                                 type="submit" className="mt-3 inline-flex w-full rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto">
