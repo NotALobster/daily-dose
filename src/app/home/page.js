@@ -70,7 +70,7 @@ function Home() {
                     <div className="sm:flex sm:items-start">
 
 
-                      <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                      <div className="mt-3 text-center sm:ml-0 sm:mt-0 sm:text-left">
                         <h3 className="text-base font-semibold leading-6 text-gray-900" id="modal-title">Sign In</h3>
                         <div className="mt-2">
                           <p className="text-sm text-gray-500">Welcome back!</p>
@@ -81,7 +81,7 @@ function Home() {
                   <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 flex justify-center">
                   <form onSubmit={handleSubmit}
                     className="flex-auto justify-center">
-                        <div className="flex justify-center">
+                        <div className="flex justify-center gap-4">
                             <input className="flex justify-center" type="text" name="username" placeholder="Username" autoComplete="off" />
                             <input className="flex justify-center" type="password" name="password" placeholder="Password" autoComplete="off" />
                         </div>
