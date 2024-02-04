@@ -7,11 +7,12 @@ import axios from "axios";
 const URL = "https://qwer-2024.onrender.com/";
 
 const Today = () => {
-    const [sendState, setSendState] = useState("No capsules for today!");
+    const [sendState, setSendState] = useState("Loading...");
 
     useEffect(() => {
         const cookies = new Cookies(null, { path: '/' });
-        let toSend = "No capsules for today!";
+        let toSend = "No capsules for today!"
+        let foundCap = false;
         axios.get(URL + "capsules/user", {headers: {'auth_temp' : cookies.get("userToken")}})
         .then(response => {
             let actualDate = new Date();
@@ -24,13 +25,18 @@ const Today = () => {
                 console.log(isSameDay);
                 if(isSameDay){
                     toSend = (element.date_added + ": " + element.message).toString();
-                    setSendState(toSend)
+                    setSendState(toSend);
+                    foundCap = true;
                 }
             });
+            if(!foundCap){
+                setSendState(toSend);
+            }
         })
         .catch(err => {
             console.log(err);
         })
+
     }, [])
     
     return (
