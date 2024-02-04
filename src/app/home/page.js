@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { CiPill } from "react-icons/ci";
+import Link from 'next/link';
 
 const apiUrl = "https://qwer-2024.onrender.com/";
 
@@ -67,10 +68,12 @@ function Home() {
             <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
             <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
               <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+
                 <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                   <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                     <div className="sm:flex sm:items-start">                      
-                      <div className="mt-3 text-center sm:ml-0 sm:mt-0 sm:text-left">
+                      <div className="mt-3 text-center sm:ml-0 sm:mt-0 sm:text-left w-full">
                         <h3 className="text-base font-semibold leading-6 text-gray-900" id="modal-title">Sign In</h3>
                         <div className="mt-2">
                           <p className="text-sm text-gray-500">Welcome back!</p>
@@ -91,6 +94,11 @@ function Home() {
                         <div className="flex justify-center gap-4">
                             <input className="flex justify-center" type="text" name="username" placeholder="Username" autoComplete="off" />
                             <input className="flex justify-center" type="password" name="password" placeholder="Password" autoComplete="off" />
+                        </div>
+                        <div className="">
+                            <Link href="/signup">
+                                <div className="flex justify justify-end font-sans-arial text-6 font-light px-0 pt-2">Sign Up</div>
+                            </Link>
                         </div>
                         <div className="flex justify-end">
                             <button 
