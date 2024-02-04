@@ -9,3 +9,13 @@ export function Signin(username, password){
     })
 }
 
+export function AddCapsule(message){
+    const cookies = new Cookies(null, { path: '/' });
+    axios.post(URL + "capsules/user", {data: {'message' : message}, headers: {'Authorization' : cookies.get("userToken")}})
+    .then(response => {
+        console.log(response.data);
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
