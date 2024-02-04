@@ -1,53 +1,72 @@
 "use client";
 import { LuSparkle } from "react-icons/lu";
-import React, {useState} from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import Cookies from "universal-cookie";
 
+const apiUrl = "https://qwer-2024.onrender.com/";
 
-
- function Home() {
+function Home() {
     const [showLogin, setShowLogin] = useState(false);
 
     const handleLoginClick = () => {
-        setShowLogin(() => !showLogin);
-    }
+        setShowLogin((prevShowLogin) => !prevShowLogin);
+    };
 
-function Foundation (props) {
+    function Foundation(props) {
         return (
             <main className="text-2xl font-bold flex justify-center items-center h-screen">
-                <div>
-                    {props.children}
-                </div>
-            </main> 
+                <div>{props.children}</div>
+            </main>
         );
     }
 
+    function LoginArea() {
+        const handleSubmit = (event) => {
+            console.log("GOT TO HERE");
+            event.preventDefault();
+            const username = event.target.username.value;
+            const password = event.target.password.value;
+            server(username, password);
+        };
 
-function LoginArea() {
-    return (
-        <div>
-            <h2 className="font-bold ml-16">Login Area</h2>
-                <form >
-                    <input type="text" placeholder="Username" />
-                    <input type="password" placeholder="Password" />
+        return (
+            <div>
+                <h2 className="font-bold ml-16">Login Area</h2>
+                <form onSubmit={handleSubmit}>
+                    <input type="text" name="username" placeholder="Username" autoComplete="off" />
+                    <input type="password" name="password" placeholder="Password" autoComplete="off" />
                     <button type="submit">Login</button>
                 </form>
             </div>
-    );
-}
+        );
+    }
 
+    function server(username, password) {
+        axios.post(apiUrl + "users/signin", {
+            username,
+            password
+        })
+        .then(response => {
+            console.log(response);
+            const cookies = new Cookies(null, { path: '/' });
+            cookies.set('userToken', response.data.accessToken);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
 
- return (
+    return (
         <div>
             <Foundation>
                 <div className="flex justify justify-center font-sans-arial text-7xl font-light px-3">
-                <button onClick={handleLoginClick}>Create Today's Capsule!</button>
+                    <button onClick={handleLoginClick}>Create Today's Capsule!</button>
                 </div>       
             </Foundation>
-            {showLogin? <LoginArea /> : <></>}
+            {showLogin ? <LoginArea /> : null}
         </div>
-    )
+    );
 }
-
-
 
 export default Home;
