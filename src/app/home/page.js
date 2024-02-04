@@ -95,7 +95,7 @@ function Home() {
                             <input className="flex justify-center" type="text" name="username" placeholder="Username" autoComplete="off" />
                             <input className="flex justify-center" type="password" name="password" placeholder="Password" autoComplete="off" />
                         </div>
-                        <div className="">
+                        <div className="mr-2">
                             <Link href="/signup">
                                 <div className="flex justify justify-end font-sans-arial text-6 font-light px-0 pt-2">Sign Up</div>
                             </Link>
@@ -103,11 +103,11 @@ function Home() {
                         <div className="flex justify-end">
                             <button 
                                 onClick={closePopup}
-                                type="button" className="mt-3 inline-flex w-full rounded-md bg-gray-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 sm:ml-3 sm:w-auto">
+                                type="button" className="mt-3 mr-80 inline-flex w-full rounded-md bg-gray-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 sm:ml-3 sm:w-auto">
                                 Close
                             </button>
                             <button 
-                                type="submit" className="mt-3 inline-flex w-full rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto">
+                                type="submit" className=" mt-3 mr-2 inline-flex w-full rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto">
                                 Login
                             </button>   
                         </div>

@@ -1,15 +1,20 @@
 "use client";
 import React from "react";
+import { useRouter } from 'next/navigation';
 
 import {AddCapsule, GetCookie} from '../utils.js'
+import Congrats from "../congrats/page.js";
 
 function Entry() {
+
+    const router = useRouter();
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const message = event.target.user_message.value;
-        console.log(message);
+        //console.log(message);
         AddCapsule(message);
-
+        router.push("/congrats");
     };
     //console.log(GetCookie());
     return (
