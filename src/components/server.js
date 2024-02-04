@@ -11,7 +11,7 @@ export function Signin(username, password){
 
 export function AddCapsule(message){
     const cookies = new Cookies(null, { path: '/' });
-    axios.post(URL + "capsules/user", {data: {'message' : message}, headers: {'Authorization' : cookies.get("userToken")}})
+    axios.post(URL + "capsules/user", {data: {'message' : message}, headers: {'auth_temp' : cookies.get("userToken")}})
     .then(response => {
         console.log(response.data);
     })

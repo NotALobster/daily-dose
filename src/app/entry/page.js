@@ -1,10 +1,9 @@
 "use client";
 import React from "react";
 
-import {AddCapsule} from '../utils.js'
+import {AddCapsule, GetCookie} from '../utils.js'
 
 function Entry() {
-
     const handleSubmit = (event) => {
         event.preventDefault();
         const message = event.target.user_message.value;
@@ -12,7 +11,7 @@ function Entry() {
         AddCapsule(message);
 
     };
-
+    //console.log(GetCookie());
     return (
         <div className="flex flex-col align-center font-sans-arial text-6xl font-light px-3 mt-32 space-y-4">
             <h2 className="flex justify-center">Tell Me About Your Day:</h2>            

@@ -3,12 +3,14 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import { StartCookie } from "../utils.js";
 
 const apiUrl = "https://qwer-2024.onrender.com/";
 
 
 function Home() {
-
+    //StartCookie();
+    
     const router = useRouter()
     const [showLogin, setShowLogin] = useState(false);
 
@@ -112,11 +114,12 @@ function Home() {
             password
         })
         .then(response => {
-            console.log(response);
+            //console.log(response);
             if (response.status == 200) {
+                const cookies = new Cookies(null, { path: '/' });
+                cookies.set('userToken', response.data.accessToken);
                 router.push("/choice")
             }
-            const cookies = new Cookies(null, { path: '/' });
         })
         .catch(error => {
             console.error('Error:', error);
